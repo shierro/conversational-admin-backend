@@ -1,7 +1,7 @@
 /* Add your custom functions here */
 
 module.exports = (sequelize, Sequelize) => {
-  const ProductCodes = require('./generated/product_codes')(sequelize, Sequelize);
+  const Blocks = require('./generated/blocks')(sequelize, Sequelize);
 
   // ProductCodes.yourComplexFunction = (params, additionalComplexity) =>
   //   ProductCodes.find({ params }, {
@@ -10,5 +10,5 @@ module.exports = (sequelize, Sequelize) => {
   //     }
   //   });
 
-  return ProductCodes;
+  return Blocks;
 };

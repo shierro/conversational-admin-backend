@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+require('sequelize-hierarchy')(Sequelize);
 
 const logger = require('../utils/logger');
 
@@ -23,8 +24,22 @@ const sequelize = new Sequelize(DB, DB_USER, DB_PASSWORD, {
   logging: DB_LOGGING === 'true' ? logger.info : false,
 });
 
-const ProductCodes = require('./ProductCodes')(sequelize, Sequelize);
+const Blocks = require('./Blocks')(sequelize, Sequelize);
+const BlockAncestors = require('./generated/blockAncestors')(sequelize, Sequelize);
+
+const hierarchyOpts = {
+  // as: 'blockAncestors',
+  // through: 'blockAncestors',
+  // throughTable: 'blockAncestors',
+  camelThrough: true,
+  labels: true,
+};
+
+Blocks.isHierarchy(hierarchyOpts);
+// Blocks.rebuildHierarchy(hierarchyOpts);
 
 module.exports = {
-  ProductCodes,
+  Blocks,
+  BlockAncestors,
+  sequelize,
 };

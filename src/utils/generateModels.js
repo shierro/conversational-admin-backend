@@ -14,7 +14,7 @@ const auto = new SequelizeAuto(DB, DB_USER, DB_PASS, {
   host: DB_HOST,
   dialect: 'mysql',
   port: DB_PORT,
-  tables: ['product_codes'], // Indicate here tables to auto generate. leave blank if all
+  tables: ['blocks'], // Indicate here tables to auto generate. leave blank if all
   camel: true,
   directory: 'src/models/generated',
 });

@@ -1,7 +1,7 @@
 {
-  "name": "node-express-boilerplate",
-  "version": "0.2.0",
-  "description": "Boilerplate using NodeJS v7+ & Express Framework",
+  "name": "conversational-admin-backend",
+  "version": "0.1.0",
+  "description": "Admin backend module for conversational engine",
   "main": "./src/index.js",
   "engines": {
     "node": ">=8.1.0"
@@ -19,11 +19,12 @@
     "cover": "cross-env NODE_ENV=test nyc mocha --recursive --exit ./src/",
     "postcover": "cp coverage/coverage-final.json coverage/coverage.json",
     "nsp": "./node_modules/.bin/nsp check --output summary",
-    "generate:models": "cross-env NODE_ENV=development node ./src/utils/generateModels.js"
+    "generate:models": "cross-env NODE_ENV=development node ./src/utils/generateModels.js",
+    "generate:db": "NODE_ENV=generate node ./src/utils/generateDb.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shierro/node-express-boilerplate"
+    "url": "https://github.com/shierro/conversational-admin-backend"
   },
   "author": "Theodoro S. Pelingan Jr.",
   "license": "ISC",
@@ -57,6 +58,7 @@
     "mysql2": "^1.5.2",
     "sequelize": "^4.33.4",
     "sequelize-auto": "^0.4.29",
+    "sequelize-hierarchy": "^1.3.2",
     "swagger-ui-express": "^2.0.15",
     "version-healthcheck": "^0.1.2",
     "winston": "^2.4.0"

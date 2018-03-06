@@ -9,6 +9,8 @@ const compression = require('compression');
 const routes = require('./routes');
 const logger = require('./utils/logger');
 
+require('./models');
+
 const app = express();
 app.server = http.createServer(app);
 
