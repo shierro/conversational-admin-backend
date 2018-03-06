@@ -1,4 +1,4 @@
-# NodeJS Express Boilerplate
+# conversational-admin-backend
 
 ## Requirements
  - NodeJS v8.1+
@@ -7,8 +7,7 @@
 
 ## Install
 ```
-$ git clone https://github.com/shierro/node-express-boilerplate <project_name>
-$ cd <project_name> && npm i
+$ npm install
 ```
 
 ## Set your Environment vars
