@@ -1,5 +1,6 @@
 const express = require('express');
 const ErrorController = require('./controllers/ErrorController');
+const BlockController = require('./controllers/BlockController');
 const auth = require('http-auth');
 const statusMonitor = require('express-status-monitor')({ path: '' });
 const healthcheck = require('express-healthcheck');
@@ -18,6 +19,8 @@ module.exports = (app) => {
   const router = express.Router();
   /* APIs */
   app.use('/api', router);
+  router.post('/block', BlockController.create);
+  router.get('/block/:id', BlockController.getHierarchy);
 
   /* Status */
   app.use('/healthcheck', auth.connect(basic), healthcheck());

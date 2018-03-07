@@ -1,26 +1,31 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('blockAancestors', {
+  return sequelize.define('blockAncestors', {
     blockId: {
-      type: DataTypes.BIGINT,
       allowNull: false,
       primaryKey: true,
+      type: DataTypes.BIGINT.UNSIGNED,
       references: {
         model: 'blocks',
-        key: 'id'
+        key: 'id',
+        onUpdate: 'NO ACTION',
+        onDelete: 'NO ACTION'
       }
     },
     ancestorId: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.BIGINT.UNSIGNED,
       allowNull: false,
       primaryKey: true,
       references: {
         model: 'blocks',
-        key: 'id'
+        key: 'id',
+        onUpdate: 'NO ACTION',
+        onDelete: 'NO ACTION'
       }
     }
   }, {
-    tableName: 'blockAancestors'
+      tableName: 'blockAncestors',
+      timestamps: false
   });
 };

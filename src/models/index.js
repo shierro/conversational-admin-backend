@@ -25,12 +25,15 @@ const sequelize = new Sequelize(DB, DB_USER, DB_PASSWORD, {
 });
 
 const Blocks = require('./Blocks')(sequelize, Sequelize);
-const BlockAncestors = require('./generated/blockAncestors')(sequelize, Sequelize);
+const BlocksAncestors = require('./generated/blockAncestors')(sequelize, Sequelize);
+const Messages = require('./generated/messages')(sequelize, Sequelize);
+const Users = require('./generated/users')(sequelize, Sequelize);
+const Answers = require('./generated/answers')(sequelize, Sequelize);
 
 const hierarchyOpts = {
-  // as: 'blockAncestors',
-  // through: 'blockAncestors',
-  // throughTable: 'blockAncestors',
+  through: 'blockAncestors',
+  throughTable: 'blockAncestors',
+  throughKey: 'blockId',
   camelThrough: true,
   labels: true,
 };
@@ -38,8 +41,16 @@ const hierarchyOpts = {
 Blocks.isHierarchy(hierarchyOpts);
 // Blocks.rebuildHierarchy(hierarchyOpts);
 
+Users.hasMany(Blocks);
+Blocks.belongsTo(Users);
+Blocks.hasMany(Messages);
+Messages.belongsTo(Blocks);
+
 module.exports = {
+  Answers,
   Blocks,
-  BlockAncestors,
+  BlocksAncestors,
+  Messages,
   sequelize,
+  Users,
 };
